@@ -2,8 +2,10 @@ import numpy as np
 import face_recognition
 import os
 
+import Constants
 
-def compare_encodings(face_encoding, database_path, threshold, debug=False):
+
+def compare_encodings(face_encoding, database_path, threshold):
     # Загрузка текущих кодировок лиц из базы данных (другой папки)
     database_encodings = []
     for filename in os.listdir(database_path):
@@ -28,9 +30,9 @@ def compare_encodings(face_encoding, database_path, threshold, debug=False):
         new_encoding_file = os.path.join(database_path, f"new_face_{len(database_encodings)}.npy")
         np.save(new_encoding_file, face_encoding)
         database_encodings.append(face_encoding)
-        if debug:
+        if Constants.debug:
             print(f"Similarity: {similarity:.2f}% New face added to the database: {new_encoding_file}")
             print(f"Similarity: {similarity:.2f}% - Face saved to the database")
     else:
-        if debug:
+        if Constants.debug:
             print(f"Similarity: {similarity:.2f}% - Face not saved to the database")
