@@ -1,2 +1,2 @@
-video = "video/noface.mp4"
+video = "video/street.mp4"
 database = "database/"

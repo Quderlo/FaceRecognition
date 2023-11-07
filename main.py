@@ -66,7 +66,7 @@ if __name__ == "__main__":
     total_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
 
     # Задаем количество процессов
-    num_processes = Constants.treads_count
+    num_processes = Constants.processors_count
 
     frames_per_process = total_frames // num_processes
 
