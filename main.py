@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     with multiprocessing.Pool(processes=num_processes) as pool:
         pool.map(process_frame, range(0, total_frames, Constants.frame_skip))
-
+    close.co
     end_time = time.time()
 
     elapsed_time = end_time - start_time
