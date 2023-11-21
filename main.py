@@ -69,6 +69,9 @@ if __name__ == "__main__":
 
     frames_per_process = total_frames // num_processes
 
+    if not os.path.exists("database"):
+        os.makedirs("database")
+
     with multiprocessing.Pool(processes=num_processes) as pool:
         pool.map(process_frame, range(0, total_frames, Constants.frame_skip))
     close.co
