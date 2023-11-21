@@ -1,7 +1,6 @@
 import cv2
-from parse_and_encode import parse_face
-from parse_and_encode import encode_frame
-from check_encode_in_database import compare_encodings
+from ParseAndEncode import parse_face, encode_frame
+from CheckEncodeInDatabase import compare_encodings
 import PATH
 import Constants
 import os

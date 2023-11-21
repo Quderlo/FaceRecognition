@@ -1,11 +1,13 @@
 import numpy as np
 import face_recognition
 import os
-
+from DatabaseConnection import connection as conn
 import Constants
+import pickle
 
 
 def compare_encodings(face_encoding, database_path, threshold):
+
     # Загрузка текущих кодировок лиц из базы данных (другой папки)
     database_encodings = []
     for filename in os.listdir(database_path):
@@ -36,3 +38,22 @@ def compare_encodings(face_encoding, database_path, threshold):
     else:
         if Constants.debug:
             print(f"Similarity: {similarity:.2f}% - Face not saved to the database")
+
+    # print(type(face_encoding))
+    # face_bytes = pickle.dumps(face_encoding)
+    #
+    # with conn.cursor() as cursor:
+    #     cursor.execute('INSERT INTO faces (face_bytes) VALUES (%s);', (face_bytes,))
+    #     conn.commit()
+    #
+    # with conn.cursor() as cursor:
+    #     cursor.execute('SELECT face_bytes FROM faces WHERE id = %s;', (1,))
+    #     result = cursor.fetchone()
+    #     stored_face_bytes = result[0]
+    #
+    # stored_face_encoding = pickle.loads(stored_face_bytes)
+    #
+    # if np.array_equal(face_encoding, stored_face_encoding):
+    #     print("Значения идентичны")
+    # else:
+    #     print("Значения не совпадают")
